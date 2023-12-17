@@ -1,0 +1,8 @@
+.image:hover {
+    transform: scale(1.6,1.6);
+    transition: 0.5s;
+}
+.table
+{
+    margin: auto;
+}
