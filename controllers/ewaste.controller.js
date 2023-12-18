@@ -1,6 +1,6 @@
 const User = require('../models/user.model')
 const uploadFile = require('../utils/upload')
-
+const fs = require('fs');
 
 
 
@@ -22,10 +22,19 @@ const createEwasteQuery = async (req, res) => {
 
         const url = await uploadFile(photoPath)
         console.log(url)
+        const userexist = await User.findById({_id})
+        if(!userexist)
+        {
+            return res.status(403).json({
+                success:false,
+                message: "No user found"
+            })
+        }
         const user = await User.findByIdAndUpdate({ _id },
             {
                 $push: { 'ewaste': { name, location, photo:url  } }
             })
+        fs.unlinkSync(`./uploads/${req.file.filename}`)
         return res.status(200).json({
             success: true,
             message: "Ewaste added succesfully",

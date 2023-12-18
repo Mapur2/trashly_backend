@@ -25,7 +25,7 @@ app.use('/api/v1',router)
 
 connectdb()
 .then(()=>{
-    app.listen(3000,()=>console.log("Server started"))
+    app.listen(3000,()=>console.log("Server started at http://localhost:3000/admin/admin.html"))
 })
 .catch((error)=>{
     console.log(error)

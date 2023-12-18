@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <h3>Name : <span id="name"></span></h3>
+    <h3>Email : <span id="email"></span></h3>
+    <h3>Ewastes</h3>
+    <table class=" table text-center">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Image</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody id="table">
+        </tbody>
+    </table>
+    <script>
+        console.log(localStorage.getItem("userid"))
+        const userid = localStorage.getItem("userid")
+        let table = document.getElementById('table')
+
+        let user;
+        const getDetail = () => {
+            fetch(`/api/v1/user/${userid}`)
+                .then((res) => res.json())
+                .then((res) => {
+                    user = res.user
+                    document.getElementById('name').textContent = user.name
+                    document.getElementById('email').textContent = user.email
+                    var m = user.ewaste.length
+                    console.log(m)
+                    li = ""
+                    for (j = 0; j < m; j++) 
+                    {           
+                        li = li + `<tr>
+            <th scope="row">${user.ewaste[j]._id}</th>
+            <td>${user.ewaste[j].name}</td>
+            <td>${user.ewaste[j].location}</td>
+            <td><img class='w-50 image'  src='${user.ewaste[j].photo}'/>
+            </td>
+            <td>
+                <p>${!user.ewaste[j].approved && !user.ewaste[j].rejected ? "Pending" : user.ewaste[j].approved ? "Approved" : "Rejected"}</p>
+            </td>
+            </tr>`
+                    }
+                    table.innerHTML = li
+                })
+                .catch((err) => {
+                    //table.innerHTML = "Cannot Get data"
+                })
+        }
+        getDetail()
+
+    </script>
+</body>
+
+</html>

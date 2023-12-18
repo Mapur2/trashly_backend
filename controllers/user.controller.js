@@ -1,6 +1,6 @@
 const User = require('../models/user.model')
 const bcrypt = require('bcrypt');
-
+const path = require('path')
 const register = async (req, res) => {
 
     const { name, email, password } = req.body
@@ -112,7 +112,25 @@ const getAllUsers = async (req, res)=>
     
 }
 
+const getUser = async (req,res)=>{
+    const {userid} = req.params
+    try {
+        const user= await User.findOne({_id:userid})
+        return res.status(200).json({
+            success:true,
+            user
+        })
+    } catch (error) {
+        return res.status(403).json(
+            {
+                success: false,
+                message: "Cannot retrieve"
+            })
+    }
+    
+}
+
 module.exports = {
-    register,login,getAllUsers
+    register,login,getAllUsers, getUser
 }
 

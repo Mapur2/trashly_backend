@@ -23,7 +23,7 @@ const getAllEwastes = () => {
             <td><img class=' w-50 image'  src='${users[i].ewaste[j].photo}'/>
             </td>
             <td>
-                <p>Approved</p>
+                <p>Rejected</p>
             </td>
             </tr>`
                     }
