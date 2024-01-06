@@ -15,7 +15,7 @@ const getAll = () => {
             <td>${users[i].name}</td>
             <td>${users[i].email}</td>
             <td>
-            <a id="${users[i]._id}" href="http://localhost:3000/admin/userEwaste.html" target="_blank" >Visit Profile</a>
+            <a id="${users[i]._id}" href="https://trashly.onrender.com/admin/userEwaste.html" target="_blank" >Visit Profile</a>
             </td>
             </tr>`
             }
