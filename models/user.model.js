@@ -14,25 +14,16 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        number:
+        {
+            type: String,
+            required: true
+        },
         points: {
             type: Number,
             default: 0
         },
-        ewaste: [
-            {
-                name: String,
-                location: String,
-                photo:String,
-                approved: {
-                    type: Boolean,
-                    default: false
-                },
-                rejected: {
-                    type: Boolean,
-                    default: false
-                }
-            }
-        ]
+        
     },
     {
         timestamps: true

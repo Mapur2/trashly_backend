@@ -7,6 +7,10 @@ const connectdb = require('./db/connectDb')
 
 const cors = require('cors');
 
+app.use(express.json())
+app.use(express.urlencoded({
+    extended:false
+}))
 
 
 app.use(cors({
@@ -14,10 +18,7 @@ app.use(cors({
     origin:'*',
     credentials:true
 }))
-app.use(express.json())
-app.use(express.urlencoded({
-    extended:false
-}))
+
 
 const router = require('./routers/user.router');
 app.use('/api/v1',router)

@@ -4,32 +4,31 @@ var table2 = document.getElementById('table2')
 
 const getAllEwastes = () => {
 
-    fetch('/api/v1/allusers')
+    fetch('/api/v1/ewastes')
         .then(res => res.json())
         .then((res) => {
-            var n = res.users.length
-            let { users } = res
+            var n = res.length
+            let { ewastes } = res
             li = ""
-            console.log("ewastes", users.ewaste)
-            for (i = 0; i < n; i++) {
-                var m = users[i].ewaste.length
-                for (j = 0; j < m; j++) {
-                    console.log(users[i].ewaste[j])
-                    if (!users[i].ewaste[j].approved && !users[i].ewaste[j].rejected) {
-                        li = li + `<tr>
-            <th scope="row">${users[i].ewaste[j]._id}</th>
-            <td>${users[i].ewaste[j].name}</td>
-            <td>${users[i].ewaste[j].location}</td>
-            <td><img class=' w-50 image'  src='${users[i].ewaste[j].photo}'/>
+            console.log("ewastes", ewastes)
+            var m = ewastes.length
+            for (j = 0; j < m; j++) 
+            {
+                console.log(ewastes[j])
+                if (!ewastes[j].approved && !ewastes[j].rejected) {
+                    li = li + `<tr>
+            <th scope="row">${ewastes[j]._id}</th>
+            <td>${ewastes[j].name}</td>
+            <td>${ewastes[j].location}</td>
+            <td><img class=' w-50 image'  src='${ewastes[j].photo}'/>
             </td>
             <td>
-            <button id=${users[i].ewaste[j]._id} class='btn btn-primary'>Approve</button> 
+            <button id=${ewastes[j]._id} class='btn btn-primary'>Approve</button> 
             </td>
             <td>
-            <p class='btn btn-danger' id=${users[i].ewaste[j]._id} >Reject</p> 
+            <p class='btn btn-danger' id=${ewastes[j]._id} >Reject</p> 
             </td>
             </tr>`
-                    }
                 }
             }
             table2.innerHTML = li

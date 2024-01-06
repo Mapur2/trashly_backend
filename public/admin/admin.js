@@ -26,9 +26,23 @@ const getAll = () => {
 
 getAll()
 
+const newEwastesCount = () =>{
+    fetch('/api/v1/newewaste/count')
+        .then(res => res.json())
+        .then((res)=>{
+            console.log(res)
+            document.getElementById('count').textContent=res.count
+        }).catch((err)=>{
+            document.getElementById('count').textContent="Error"
+        })
+}
+
+newEwastesCount()
+
 table1.addEventListener("click", (e) => {
     if (e.target.matches('a')) {
         console.log("clicked", e.target.id)
         localStorage.setItem("userid", e.target.id)
     }
 })
+
