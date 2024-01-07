@@ -23,6 +23,9 @@ app.use(cors({
 const router = require('./routers/user.router');
 app.use('/api/v1',router)
 
+const message=require('./routers/message.router')
+app.use('/api/v1',message)
+
 
 connectdb()
 .then(()=>{
