@@ -35,7 +35,7 @@ const createEwasteQuery = async (req, res) => {
 
         fs.unlinkSync(`./uploads/${req.file.filename}`)
 
-        //const sendMail = await sendEmail(user.email, `<h1>Ewaste Created<h1><br> name: ${name} location: ${location} <br> We will reach you in 24 hrs`) 
+        const sendMail = await sendEmail(user.email, `<h1>Ewaste Created<h1><br> name: ${name} location: ${location} <br> We will reach you in 24 hrs`) 
 
         return res.status(200).json({
             success: true,
@@ -93,7 +93,7 @@ const approveEWaste = async (req, res) => {
             },
             {new:true})
 
-        //const sendMail = await sendEmail(user.email, `<h1>Ewaste Approved<h1><br> name:${ewaste.name}<br>
+        const sendMail = await sendEmail(user.email, `<h1>Ewaste Approved<h1><br> name:${ewaste.name}<br>
                                    // location:${ewaste.location}`) 
 
         res.status(200).json({
@@ -134,7 +134,7 @@ const rejectEWaste = async (req, res) => {
                 });
         }
 
-        // const sendMail = await sendEmail(user.email, `<h1>Ewaste Rejected<h1><br>`) 
+        const sendMail = await sendEmail(user.email, `<h1>Ewaste Rejected<h1><br>`) 
 
 
         res.status(200).json({

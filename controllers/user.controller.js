@@ -42,7 +42,7 @@ const register = async (req, res) => {
         //encrypting password
         const user = await User.create({ name, email, password: encrypt_password, number })
 
-        //const sendMail = await sendEmail(user.email, `<h1>Hello ${name}<h1><br> Welcome to Trashly, ${name}`) 
+        const sendMail = await sendEmail(user.email, `<h1>Hello ${name}<h1><br> Welcome to Trashly, ${name}`) 
 
         res.status(201).json({
             success: true,
