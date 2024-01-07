@@ -1,5 +1,5 @@
 const express = require('express');
-const { register, login, getAllUsers, getUser } = require('../controllers/user.controller');
+const { register, login, getAllUsers, getUser, getOtp, forgotPassword, getAllEwastesWithWastes } = require('../controllers/user.controller');
 const { createEwasteQuery, approveEWaste, rejectEWaste, newEwastesCount, getAllEwastes, getUserEwaste } = require('../controllers/ewaste.controller');
 const {upload} = require('../middleware/multer')
 
@@ -15,4 +15,8 @@ router.route('/user/:userid').get(getUser)
 router.route('/userewaste/:userid').get(getUserEwaste)
 router.route('/newewaste/count').get(newEwastesCount)
 router.route('/ewastes').get(getAllEwastes)
+router.route('/getotp').post(getOtp)
+router.route('/fp').put(forgotPassword)
+router.route('/userswaste').get(getAllEwastesWithWastes)
+
 module.exports = router

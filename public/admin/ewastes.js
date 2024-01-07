@@ -4,20 +4,23 @@ var table2 = document.getElementById('table2')
 
 const getAllEwastes = () => {
 
-    fetch('/api/v1/ewastes')
+    fetch('/api/v1/userswaste')
         .then(res => res.json())
         .then((res) => {
-            var n = res.length
-            let { ewastes } = res
+
+            let { users } = res
             li = ""
-            console.log("ewastes", ewastes)
-            var m = ewastes.length
-            for (j = 0; j < m; j++) 
-            {
-                console.log(ewastes[j])
-                if (!ewastes[j].approved && !ewastes[j].rejected) {
-                    li = li + `<tr>
-            <th scope="row">${ewastes[j]._id}</th>
+            var n = users.length
+            for (i = 0; i < n; i++) {
+                ewastes=users[i].ewaste
+                var m = ewastes.length
+                for (j = 0; j < m; j++) 
+                {
+                    
+                    if (!ewastes[j].approved && !ewastes[j].rejected) {
+                        li = li + `<tr>
+            <th scope="row">${users[i].name}<br/>${users[i].number}<br/>${users[i].email}<br/>
+            ${users[i]._id}</th>
             <td>${ewastes[j].name}</td>
             <td>${ewastes[j].location}</td>
             <td><img class=' w-50 image'  src='${ewastes[j].photo}'/>
@@ -29,6 +32,7 @@ const getAllEwastes = () => {
             <p class='btn btn-danger' id=${ewastes[j]._id} >Reject</p> 
             </td>
             </tr>`
+                    }
                 }
             }
             table2.innerHTML = li
