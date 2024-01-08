@@ -39,6 +39,18 @@ const newEwastesCount = () =>{
 
 newEwastesCount()
 
+function getNewMessageCount() {
+    fetch('/api/v1/countMessages')
+        .then(res => res.json())
+        .then((res)=>{
+            console.log(res)
+            document.getElementById('countComplain').textContent=res.count
+        }).catch((err)=>{
+            document.getElementById('countComplain').textContent="Error"
+        })
+}
+getNewMessageCount()
+
 table1.addEventListener("click", (e) => {
     if (e.target.matches('a')) {
         console.log("clicked", e.target.id)

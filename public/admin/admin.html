@@ -2,41 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Portal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body class="p-3">
-  <h1>Users</h1>
+  <h1>Admin Panel</h1>
   <h4 style="text-align: right;">Always refresh to get latest updates</h4>
-    <table class="table" >
-        <thead>
-          <tr>
-            <th scope="col">User</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Profile Link</th>
-          </tr>
-        </thead>
-        <tbody id="table1">
-          
-        </tbody>
-      </table>
-      <div class="d-flex justify-content-evenly">
-      <a class="btn btn-primary" href="/admin/ewastes.html">New Ewastes (<span id="count"></span>)</a>
-      <a class="btn btn-outline-success" href="/admin/approved.html">All Approved Ewastes</a>
-      <a class="btn btn-outline-danger" href="/admin/rejected.html">All Rejected Ewastes</a>
-      </div>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
-    <script src="admin.js"></script>
+  <div class="d-flex justify-content-evenly m-3">
+    <a style="font-weight:700;" class="btn btn-primary" href="/admin/ewastes.html">
+      New Wastes (<span id="count"></span>)</a>
+    <a style="font-weight:700;" class="btn btn-outline-success" href="/admin/approved.html">
+      All Approved Wastes</a>
+    <a style="font-weight:700;" class="btn btn-outline-danger" href="/admin/rejected.html">
+      All Rejected Wastes</a>
+    <a style="font-weight:700;" class="btn btn-warning" href="/admin/complain.html">
+      New Complains/Queries (<span id="countComplain"></span>)</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Profile Link</th>
+      </tr>
+    </thead>
+    <tbody id="table1">
+
+    </tbody>
+  </table>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+  <script src="admin.js"></script>
 </body>
 
 </html>

@@ -7,7 +7,7 @@ const messageSchema = new Schema({
     },
     reply:{
         type:String,
-        default:""
+        default:null
     },
     complete:{
         type:Boolean,

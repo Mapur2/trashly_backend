@@ -2,7 +2,13 @@ const Message = require('../models/message.model');
 
 const message = async (req, res) => {
     const { userid, message } = req.body
-
+    if (!message || !userid)
+        return res.status(403).json(
+            {
+                success: false,
+                message: "Please Enter Some Message"
+            }
+        )
     try {
         const userMessage = await Message.create({
             message,
@@ -25,14 +31,20 @@ const message = async (req, res) => {
 }
 
 const reply = async (req, res) => {
-    const { reply, userid } = req.body
-
+    const { reply, _id } = req.body
+    if (!reply || !_id)
+        return res.status(403).json(
+            {
+                success: false,
+                message: "Please Enter Some Reply"
+            }
+        )
     try {
-        const userReply = await Message.findOneAndUpdate({ createdBy: userid },
+        const userReply = await Message.findByIdAndUpdate({ _id },
             {
                 $set: {
                     "reply": reply,
-                    "complete":true
+                    "complete": true
                 }
             }, { new: true })
 
@@ -62,14 +74,13 @@ const reply = async (req, res) => {
 }
 
 const getAllMessages = async (req, res) => {
-    try 
-    {
-        const messages= await Message.find()
+    try {
+        const messages = await Message.find()
         return res.status(200).json({
             success: true,
             messages
         })
-    } 
+    }
     catch (error) {
         console.log(error)
         return res.status(403).json(
@@ -81,19 +92,38 @@ const getAllMessages = async (req, res) => {
     }
 }
 
-const getUserMessage = async (req, res) =>{
-    const {userid} = req.body
-     try 
-     {
-        const messages = await Message.find({createdBy:userid})
+const getUserMessage = async (req, res) => {
+    const { userid } = req.body
+    try {
+        const messages = await Message.find({ createdBy: userid })
         res.status(200).json({
             success: true,
             messages
         });
-     } catch (error) {
+    } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal server error' });
-     }
+    }
 }
 
-module.exports = { message, reply, getAllMessages, getUserMessage }
+const getNewMessageCount = async (req, res) => {
+    try {
+        const messages = await Message.find({complete:false})
+        count=messages.length
+        return res.status(200).json({
+            success: true,
+            count
+        })
+    }
+    catch (error) {
+        console.log(error)
+        return res.status(403).json(
+            {
+                success: false,
+                message: "Something went wrong"
+            }
+        )
+    }
+}
+
+module.exports = { message, reply, getAllMessages, getUserMessage, getNewMessageCount }
