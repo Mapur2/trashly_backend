@@ -26,6 +26,8 @@ const getMessages = async () => {
         })
 }
 
+    getMessages()
+
 
 var table2 = document.getElementById('table2')
 
