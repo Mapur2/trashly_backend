@@ -25,9 +25,7 @@ const getMessages = async () => {
             console.log(error)
         })
 }
-setInterval(() => {
-    getMessages()
-}, 3000);
+
 
 var table2 = document.getElementById('table2')
 
